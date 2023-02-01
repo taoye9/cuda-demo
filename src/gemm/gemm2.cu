@@ -149,6 +149,13 @@ __global__ void gemm2(float *A, float *B, float *C,
             }
         }
     } while (tile_idx < K);
+    
+    for (int j = 0; j < THREAD_SIZE_Y; j ++)
+        for (int i = 0; i < THREAD_SIZE_X; i ++){
+            C[flat_2dim(blockIdx.y * BLOCK_SIZE_Y + threadIdx.y * THREAD_SIZE_Y + j, 
+                        blockIdx.x * BLOCK_SIZE_X + threadIdx.x * THREAD_SIZE_Y + i,
+                        ,N)]
+        }
 }
 
 /* A: M * K, B: K * N, C: M * N.
