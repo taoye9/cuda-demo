@@ -27,7 +27,7 @@ handle是用来管理cuBLAS上下文环境的, transa和transb代表op，用于�
    
    lemma: $$C = (C^T)^T = ((A \times B)^T)^T = (B^T \times A^T)^T$$  
     
-   利用lemma， 我们在cublas gemm中计算 $C^T$ 。第一个传入的参数`&B`是一个 $(N \ times K)$ 的连续内存，cublas理解为按照列优先的 $(N, K)$ 的二维矩阵。 第二个传入的参数`&A`是一个 $(K \times M)$ 的连续内存，cublas应该把B理解为按照列优先的(K, M) 的二维矩阵。cublas gemm会按照列优先方式写入计算结果 $C^T \in (N, M)$ 。pytorch框架会按照行优先理解为 $C \in (M, N)$。 
+   利用lemma， 我们在cublas gemm中计算 $C^T$ 。第一个传入的参数`&B`是一个 $(N \times K)$ 的连续内存，cublas理解为按照列优先的 $(N, K)$ 的二维矩阵。 第二个传入的参数`&A`是一个 $(K \times M)$ 的连续内存，cublas应该把B理解为按照列优先的(K, M) 的二维矩阵。cublas gemm会按照列优先方式写入计算结果 $C^T \in (N, M)$ 。pytorch框架会按照行优先理解为 $C \in (M, N)$。 
 
     
 
