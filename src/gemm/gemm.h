@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <cstdio>
 #include <assert.h>
+#include <time.h>
+#include <chrono>
+
+#define BOOL2STR(x) ((x) ? "true" : "false")
 
 #define FETCH_FLOAT4(pointer) (reinterpret_cast<float*>(&(pointer))[0])
 
@@ -24,7 +28,7 @@ void print_mat(float * C, int m, int n);
 
 void cpuSgemm(const float * A, const float *B, float *C, int M, int N, int K);
 
-void gpuBlasSgemm(const float * A, const float *B, float *C, int M, int N, int K);
+void gpuBlasSgemm(const float * A, const float *B, float *C, int M, int N, int K, bool no_transpose=true);
 
 bool all_close(const float *A, const float *B, const int M, const int N);
 

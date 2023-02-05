@@ -8,6 +8,7 @@ bool all_close(const float *A, const float *B, const int M, const int N){
             if (A[idx] != B[idx]){
                 printf("value error, (%d, %d) ,%f, %f, %f\n", j, i, A[j * N + i], B[j * N + i]);
                 success = false;
+                return success;
             }
         }
     return success;
